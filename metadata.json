@@ -1,0 +1,7 @@
+{
+  "name": "Copy of Assistante Éducatrice Sarah",
+  "description": "Sarah, an interactive conversational AI agent designed to help Tunisian students and teachers. Engage in a real-time chat, use voice commands, and take interactive quizzes.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Assistante Éducatrice Sarah",
+  "short_name": "Sarah AI",
+  "description": "Sarah, an interactive conversational AI agent designed to help Tunisian students and teachers. Engage in a real-time chat, use voice commands, and take interactive quizzes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8fafc",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "192x192 512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
