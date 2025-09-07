@@ -97,3 +97,17 @@ export enum Difficulty {
   Medium = 'Medium',
   Hard = 'Hard',
 }
+
+export interface ConversationSearchResult {
+  type: 'conversation';
+  conversationId: string;
+  conversationTitle: string;
+  message: ChatMessage;
+}
+
+export interface CorpusSearchResult {
+  type: 'corpus';
+  document: CorpusDocument;
+}
+
+export type SearchResultItem = ConversationSearchResult | CorpusSearchResult;

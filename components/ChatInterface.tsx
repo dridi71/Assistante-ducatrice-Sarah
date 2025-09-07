@@ -43,16 +43,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ conversation, addMessage,
         addMessage(conversation.id, MessageRole.User, message, attachment || undefined);
         addMessage(conversation.id, MessageRole.Assistant, '');
 
-        const isQuizRequest = message.toLowerCase().includes(t('quizKeyword'));
-
-        if (isQuizRequest) {
-            updateLastMessage(conversation.id, { content: t('loadingQuiz') });
-            const topic = message.split(new RegExp(t('quizTopicSplitter'), 'i')).pop()?.trim() || t('defaultQuizTopic');
-            
-            const quizData = await generateQuiz(topic, '7ème Année de Base', 3, language, corpusContent);
-            updateLastMessage(conversation.id, { content: '', quiz: quizData });
-
-        } else if (attachment?.type === 'image') {
+        if (attachment?.type === 'image') {
             const stream = explainImageStream(message, attachment.content, 'image/webp', language, corpusContent, fileContent);
             for await (const chunk of stream) {
                 updateMessage(conversation.id, chunk);

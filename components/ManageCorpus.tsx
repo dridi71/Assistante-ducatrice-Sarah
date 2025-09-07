@@ -29,7 +29,7 @@ const ManageCorpus: React.FC = () => {
     };
 
     return (
-        <div className="h-full overflow-y-auto p-4 md:p-6">
+        <div>
             <h2 className="text-xl font-bold mb-4 text-slate-800">{t('corpusTitle')}</h2>
             <p className="text-slate-600 mb-6">{t('corpusDescription')}</p>
 

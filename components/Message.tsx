@@ -14,13 +14,13 @@ interface MessageProps {
 }
 
 const UserAvatar = () => (
-    <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center font-bold text-slate-600 flex-shrink-0">
+    <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center font-semibold text-gray-600 flex-shrink-0">
         U
     </div>
 );
 
 const AssistantAvatar = () => (
-     <div className="w-8 h-8 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold flex-shrink-0">
+     <div className="w-9 h-9 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold flex-shrink-0">
         S
     </div>
 );
@@ -28,13 +28,13 @@ const AssistantAvatar = () => (
 const DocumentCard = ({ name }: { name: string }) => {
     const { t } = useLanguage();
     return (
-        <div className="p-2 mb-2 bg-slate-200/50 rounded-lg flex items-center gap-2">
-             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-indigo-700 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <div className="p-3 mb-2 bg-gray-200/50 rounded-lg flex items-center gap-3">
+             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7 text-indigo-700 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
             <div className='truncate'>
-                <p className="text-xs font-semibold text-slate-600">{t('fileCardTitle')}</p>
-                <p className="text-sm text-slate-800 truncate">{name}</p>
+                <p className="text-xs font-semibold text-gray-600">{t('fileCardTitle')}</p>
+                <p className="text-sm text-gray-800 truncate font-medium">{name}</p>
             </div>
         </div>
     )
@@ -90,10 +90,10 @@ const Message: React.FC<MessageProps> = ({ message, conversationId, updateMessag
     };
 
     return (
-        <div className={`flex items-start gap-3 ${isUser ? 'justify-end' : ''}`}>
+        <div className={`flex items-start gap-3.5 ${isUser ? 'justify-end' : ''}`}>
              {!isUser && <AssistantAvatar />}
             <div 
-                className={`max-w-2xl p-3 rounded-2xl relative group ${isUser ? 'bg-indigo-600 text-white rounded-br-lg' : 'bg-slate-100 text-slate-800 rounded-bl-lg'}`}
+                className={`max-w-2xl p-4 rounded-2xl relative group ${isUser ? 'bg-indigo-600 text-white rounded-br-lg' : 'bg-gray-100 text-gray-800 rounded-bl-lg'}`}
                 dir={language === 'ar' ? 'rtl' : 'ltr'}
             >
                 {message.attachment?.type === 'image' && (
@@ -111,7 +111,7 @@ const Message: React.FC<MessageProps> = ({ message, conversationId, updateMessag
                         p: ({node, children, ...props}) => {
                              const textContent = React.Children.toArray(children).join('');
                              if(textContent.includes(suggestionKeyword)){
-                                 return <div className="mt-3 pt-3 border-t border-slate-200/80"><p className="text-sm font-semibold text-indigo-700" {...props}>{children}</p></div>
+                                 return <div className="mt-3 pt-3 border-t border-gray-200/80"><p className="text-sm font-semibold text-indigo-700" {...props}>{children}</p></div>
                              }
                              return <p className={isUser ? 'text-white' : ''} {...props}>{children}</p>
                         },
@@ -132,7 +132,7 @@ const Message: React.FC<MessageProps> = ({ message, conversationId, updateMessag
                   <div className="flex items-center gap-1 pt-1 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button
                       onClick={() => updateMessageFeedback(conversationId, message.id, FeedbackState.Liked)}
-                      className={`p-1 rounded-full hover:bg-slate-200 ${message.feedback === FeedbackState.Liked ? 'text-indigo-600' : 'text-slate-400'}`}
+                      className={`p-1 rounded-full hover:bg-gray-200 ${message.feedback === FeedbackState.Liked ? 'text-indigo-600' : 'text-gray-400'}`}
                       aria-label="Like response"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -141,7 +141,7 @@ const Message: React.FC<MessageProps> = ({ message, conversationId, updateMessag
                     </button>
                     <button
                       onClick={() => updateMessageFeedback(conversationId, message.id, FeedbackState.Disliked)}
-                      className={`p-1 rounded-full hover:bg-slate-200 ${message.feedback === FeedbackState.Disliked ? 'text-red-500' : 'text-slate-400'}`}
+                      className={`p-1 rounded-full hover:bg-gray-200 ${message.feedback === FeedbackState.Disliked ? 'text-red-500' : 'text-gray-400'}`}
                       aria-label="Dislike response"
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -154,7 +154,7 @@ const Message: React.FC<MessageProps> = ({ message, conversationId, updateMessag
                 {!isUser && message.content && (
                     <button 
                         onClick={handleSpeak}
-                        className="absolute top-2 end-2 bg-slate-500/20 text-slate-600 rounded-full p-1.5 hover:bg-slate-500/40 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+                        className="absolute top-2.5 end-2.5 bg-black/5 text-gray-600 rounded-full p-1.5 hover:bg-black/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
                         aria-label={t('speakLabel')}
                     >
                          {isSpeaking ? (

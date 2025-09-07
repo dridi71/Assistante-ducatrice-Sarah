@@ -17,19 +17,19 @@ const QuickActionButton: React.FC<QuickActionButtonProps> = ({ onSend }) => {
 
   return (
     <div className='max-w-xl mx-auto'>
-        <p className="text-center text-slate-600 mb-4">{t('quickActionsTitle')}</p>
+        <p className="text-center text-gray-600 mb-6">{t('quickActionsTitle')}</p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {actions.map(action => (
             <button 
                 key={action.title} 
                 onClick={() => onSend(action.prompt)}
-                className="text-start p-4 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors duration-200"
+                className="text-start p-5 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors duration-200"
             >
-                <div className="flex items-center gap-3">
-                    <span className="text-2xl">{action.icon}</span>
+                <div className="flex items-center gap-4">
+                    <span className="text-3xl">{action.icon}</span>
                     <div>
-                        <p className="font-semibold text-slate-800">{action.title}</p>
-                        <p className="text-sm text-slate-500">{action.prompt}...</p>
+                        <p className="font-semibold text-gray-800">{action.title}</p>
+                        <p className="text-sm text-gray-500">{action.prompt}...</p>
                     </div>
                 </div>
             </button>

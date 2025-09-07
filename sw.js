@@ -1,9 +1,8 @@
 const CACHE_NAME = 'sarah-ai-cache-v1';
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/index.tsx',
-  '/logo.svg',
+  './',
+  './index.html',
+  './logo.svg',
   'https://cdn.tailwindcss.com',
   'https://esm.sh/react@^19.1.1',
   'https://esm.sh/react-dom@^19.1.1'

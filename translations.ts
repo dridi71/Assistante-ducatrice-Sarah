@@ -88,7 +88,15 @@ export const translations: Translations = {
   cancelRename: { fr: 'Annuler', ar: 'إلغاء' },
   defaultConversationTitle: { fr: 'Nouvelle Conversation', ar: 'محادثة جديدة' },
   manageCorpusButton: { fr: 'Base de Connaissances', ar: 'قاعدة المعرفة' },
+  createQuizButton: { fr: 'Créer un Quiz', ar: 'إنشاء اختبار' },
   
+  // Search
+  searchPlaceholder: { fr: 'Rechercher dans les chats et documents...', ar: 'ابحث في المحادثات والمستندات...' },
+  searchResultsTitle: { fr: 'Résultats de recherche pour', ar: 'نتائج البحث عن' },
+  conversationsSection: { fr: 'Conversations', ar: 'المحادثات' },
+  corpusSection: { fr: 'Base de Connaissances', ar: 'قاعدة المعرفة' },
+  noResultsFound: { fr: 'Aucun résultat trouvé.', ar: 'لم يتم العثور على نتائج.' },
+
   // Corpus
   corpusTitle: { fr: 'Gérer la Base de Connaissances', ar: 'إدارة قاعدة المعرفة' },
   corpusDescription: { fr: "Ajoutez des documents officiels (programmes, manuels...) pour que Sarah base ses réponses exclusivement sur ces sources.", ar: 'أضف وثائق رسمية (برامج، كتب مدرسية...) لكي تبني سارة إجاباتها على هذه المصادر حصراً.' },
@@ -100,6 +108,17 @@ export const translations: Translations = {
   corpusEmptyState: { fr: 'Votre base de connaissances est vide. Ajoutez un document pour commencer.', ar: 'قاعدة المعرفة فارغة. أضف وثيقة للبدء.' },
   deleteDocumentLabel: { fr: 'Supprimer le document', ar: 'حذف الوثيقة' },
   existingDocuments: { fr: 'Documents existants', ar: 'الوثائق الموجودة' },
+  
+  // Create Quiz
+  createQuizTitle: { fr: 'Générer un Quiz Interactif', ar: 'إنشاء اختبار تفاعلي' },
+  createQuizDescription: { fr: 'Sélectionnez une matière, un niveau et un thème pour créer un quiz personnalisé pour les élèves.', ar: 'اختر مادة ومستوى وموضوعًا لإنشاء اختبار مخصص للطلاب.' },
+  quizTopicLabel: { fr: 'Thème du quiz', ar: 'موضوع الاختبار' },
+  quizTopicPlaceholder: { fr: 'Ex: Les fractions, la révolution tunisienne...', ar: 'مثال: الكسور، الثورة التونسية...' },
+  numQuestionsLabel: { fr: 'Nombre de questions', ar: 'عدد الأسئلة' },
+  generateQuizButton: { fr: 'Générer le Quiz', ar: 'إنشاء الاختبار' },
+  errorEnterQuizTopic: { fr: 'Veuillez entrer un thème pour le quiz.', ar: 'الرجاء إدخال موضوع للاختبار.' },
+  quizRequestTitle: { fr: 'Demande de quiz', ar: 'طلب اختبار' },
+
 
   // Status Messages
   loadingMessage: { fr: "Sarah réfléchit...", ar: "سارة تفكّر..." },
@@ -115,9 +134,6 @@ export const translations: Translations = {
   
   // Keywords
   suggestionKeyword: { fr: '**Suggestion :**', ar: '**اقتراح:**' },
-  quizKeyword: { fr: 'quiz', ar: 'اختبار' },
-  quizTopicSplitter: { fr: 'sur', ar: 'عن' },
-  defaultQuizTopic: { fr: 'un sujet général', ar: 'موضوع عام' },
   
   // Quiz Component
   quizQuestion: { fr: 'Question', ar: 'السؤال' },

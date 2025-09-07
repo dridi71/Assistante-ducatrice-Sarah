@@ -132,10 +132,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
     <div className='w-full'>
       {error && <p className="text-red-600 text-sm mb-2">{error}</p>}
       
-      {isProcessingFile && <p className="text-slate-600 text-sm mb-2 animate-pulse">{t('processingFile')}</p>}
+      {isProcessingFile && <p className="text-gray-600 text-sm mb-2 animate-pulse">{t('processingFile')}</p>}
 
       {attachment && (
-          <div className="mb-2 p-2 bg-slate-100 rounded-lg relative w-fit max-w-sm">
+          <div className="mb-2 p-2 bg-gray-100 rounded-lg relative w-fit max-w-sm">
               {attachment.type === 'image' ? (
                 <img src={attachment.previewUrl!} alt={attachment.name} className="h-24 w-auto rounded-md" />
               ) : (
@@ -143,13 +143,13 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-indigo-700 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                     </svg>
-                    <p className="text-sm text-slate-800 truncate">{attachment.name}</p>
+                    <p className="text-sm text-gray-800 truncate">{attachment.name}</p>
                 </div>
               )}
               <button
                   type="button"
                   onClick={removeFile}
-                  className="absolute top-0 end-0 -translate-y-1/2 translate-x-1/2 bg-slate-600 text-white rounded-full p-0.5 hover:bg-slate-800 transition-colors"
+                  className="absolute top-0 end-0 -translate-y-1/2 translate-x-1/2 bg-gray-600 text-white rounded-full p-0.5 hover:bg-gray-800 transition-colors"
                   aria-label={t('removeFileLabel')}
               >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -164,7 +164,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
           type="button"
           onClick={() => fileInputRef.current?.click()}
           disabled={isStreaming || isProcessingFile}
-          className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-slate-200 text-slate-600 rounded-full disabled:bg-slate-100 disabled:text-slate-400 hover:bg-slate-300 transition-colors"
+          className="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-gray-200 text-gray-600 rounded-full disabled:bg-gray-100 disabled:text-gray-400 hover:bg-gray-300 transition-colors"
           aria-label={t('attachFileLabel')}
         >
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
@@ -187,24 +187,24 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleKeyDown}
               placeholder={isListening ? t('listening') : t('chatPlaceholder')}
-              className="w-full p-2 pe-10 border border-slate-300 rounded-lg resize-none focus:ring-2 focus:ring-indigo-500 focus:outline-none disabled:bg-slate-100"
+              className="w-full p-2.5 pe-12 border border-gray-300 bg-white rounded-xl resize-none focus:ring-2 focus:ring-indigo-500 focus:outline-none disabled:bg-gray-100"
               rows={1}
               disabled={isStreaming || isProcessingFile}
               style={{ maxHeight: '150px' }}
             />
-            <div className="absolute end-2 bottom-2 group">
+            <div className="absolute end-2.5 bottom-2.5 group">
                  <button
                     type="button"
                     onClick={toggleListening}
                     disabled={isStreaming || !recognitionRef.current || isProcessingFile || micPermission === 'denied'}
-                    className={`text-slate-500 hover:text-indigo-600 disabled:text-slate-300 disabled:cursor-not-allowed ${isListening ? 'text-red-500 animate-pulse' : ''}`}
+                    className={`text-gray-500 hover:text-indigo-600 disabled:text-gray-300 disabled:cursor-not-allowed ${isListening ? 'text-red-500 animate-pulse' : ''}`}
                  >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.75a6 6 0 0 0 6-6v-1.5m-6 7.5a6 6 0 0 1-6-6v-1.5m12 7.5v-1.5a6 6 0 0 0-6-6v-1.5a6 6 0 0 0-6 6v1.5m6 7.5h.008v.008H12v-.008ZM12 15h.008v.008H12v-.008Z" />
                     </svg>
                 </button>
                 {micPermission === 'denied' && (
-                     <div className="absolute bottom-full mb-2 end-0 w-64 p-2 bg-slate-800 text-white text-xs rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                     <div className="absolute bottom-full mb-2 end-0 w-64 p-2 bg-gray-800 text-white text-xs rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
                         {t('errorSpeechNotAllowed')}
                     </div>
                 )}
@@ -214,10 +214,10 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
         <button
           type="submit"
           disabled={isStreaming || isProcessingFile || (!input.trim() && !attachment)}
-          className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-indigo-600 text-white rounded-full disabled:bg-indigo-300 transition-colors"
+          className="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-indigo-600 text-white rounded-full disabled:bg-indigo-300 transition-colors"
           aria-label={t('sendMessageLabel')}
         >
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18" />
           </svg>
         </button>
