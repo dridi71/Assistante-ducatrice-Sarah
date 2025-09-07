@@ -5,6 +5,11 @@ import { GoogleGenAI, Type } from "@google/genai";
 // This file acts as a secure backend endpoint.
 // It should be deployed as a serverless function (e.g., on Vercel, Netlify).
 
+// Configure the function to run on the Edge runtime for streaming support
+export const config = {
+  runtime: 'edge',
+};
+
 // Initialize the Google AI client with the API key from server-side environment variables
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
 const model = 'gemini-2.5-flash';
@@ -47,8 +52,7 @@ const getBasePrompt = (language: 'fr' | 'ar', corpusContent?: string, fileConten
         عندما تطلب منك إنشاء رسم بياني، استخدم صيغة Mermaid.js في كتلة تعليمات برمجية \`\`\`mermaid.
         عندما تكتب معادلات كيميائية أو رياضية، استخدم صيغة KaTeX (محاطة بـ $ أو $$).`
         : `Tu es Sarah, une tutrice IA experte, spécialisée dans le **système éducatif tunisien**. Tu es également proactive. Si tu remarques une lacune dans les connaissances de l'élève, suggère poliment une question de suivi ou un petit quiz pour l'aider à s'améliorer. Commence tes suggestions par '**Suggestion :**'.
-        Toutes tes réponses, exemples et explication...
-        s doivent être conformes au **programme officiel tunisien** pour le niveau spécifié.
+        Toutes tes réponses, exemples et explications doivent être conformes au **programme officiel tunisien** pour le niveau spécifié.
         Lorsque l'on te demande de créer un diagramme, génère la syntaxe Mermaid.js dans un bloc de code \`\`\`mermaid.
         Lorsque tu écris des équations chimiques ou mathématiques, utilise la syntaxe KaTeX (entourée par $ ou $$).`;
 

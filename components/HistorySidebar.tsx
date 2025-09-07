@@ -45,6 +45,7 @@ const HistorySidebar: React.FC<HistorySidebarProps> = ({ history, onNewChat, onS
       <button
         onClick={onNewChat}
         className="w-full flex items-center justify-center gap-2.5 p-2.5 mb-3 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors shadow-sm"
+        data-tutorial-id="new-chat"
       >
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -101,6 +102,7 @@ const HistorySidebar: React.FC<HistorySidebarProps> = ({ history, onNewChat, onS
       <div className="border-t border-gray-200 mt-auto pt-3 space-y-1">
          <button 
              onClick={onSelectQuizCreator}
+             data-tutorial-id="create-quiz"
              className={`w-full flex items-center gap-3 p-2.5 text-sm rounded-lg ${
                  activeId === 'quiz' ? 'bg-indigo-200 text-indigo-900 font-semibold' : 'text-gray-700 hover:bg-gray-200'
              }`}
@@ -112,6 +114,7 @@ const HistorySidebar: React.FC<HistorySidebarProps> = ({ history, onNewChat, onS
          </button>
          <button 
              onClick={onSelectCorpus}
+             data-tutorial-id="manage-corpus"
              className={`w-full flex items-center gap-3 p-2.5 text-sm rounded-lg ${
                  activeId === 'corpus' ? 'bg-indigo-200 text-indigo-900 font-semibold' : 'text-gray-700 hover:bg-gray-200'
              }`}

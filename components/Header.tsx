@@ -27,13 +27,12 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onMenuToggle }) => {
                     <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </button>
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-8 h-8 text-indigo-600 me-3">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.375a6.375 6.375 0 0 0 6.375-6.375V9.75A6.375 6.375 0 0 0 12 3.375Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 3.375a6.375 6.375 0 0 0-6.375 6.375v2.25A6.375 6.375 0 0 0 12 18.375Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9.75 12.375c0 .621.504 1.125 1.125 1.125h2.25c.621 0 1.125-.504 1.125-1.125v-2.25c0-.621-.504-1.125-1.125-1.125h-2.25a1.125 1.125 0 0 0-1.125 1.125v2.25Z" />
-              <path strokeLinecap="round" strokeLinejoin="round" d="M12 18.375v.008c.044.541.499 1.117 1.226 1.503a14.28 14.28 0 0 0 5.148 1.482c.02.003.039.006.059.009L12 12.375l-6.433 9.007a.997.997 0 0 0 .06.009c1.774-.33 3.52-1.023 5.147-1.482.727-.386 1.182-.962 1.227-1.503v-.008Z" />
+          <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 me-3">
+            <path d="M150 70 C100 70 80 120 150 160 C220 120 200 70 150 70Z" fill="#7DCEA0"/>
+            <path d="M150 160 C80 200 70 240 150 240 C230 240 220 200 150 160Z" fill="#7DCEA0"/>
+            <circle cx="150" cy="150" r="30" fill="#3498DB"/>
+            <path d="M150 180 C130 180 110 210 150 210 C190 210 170 180 150 180Z" fill="#3498DB"/>
           </svg>
-
           <h1 className="hidden sm:block text-xl md:text-2xl font-bold text-gray-900">
             {t('appTitle')}
           </h1>
@@ -55,8 +54,9 @@ const Header: React.FC<HeaderProps> = ({ onSearch, onMenuToggle }) => {
                 </div>
             </form>
         </div>
-
-        <LanguageSwitcher />
+        <div data-tutorial-id="lang-switcher">
+          <LanguageSwitcher />
+        </div>
       </div>
     </header>
   );

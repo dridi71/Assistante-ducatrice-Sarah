@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext';
 import { useChatHistory } from './hooks/useChatHistory';
@@ -9,6 +9,7 @@ import ManageCorpus from './components/ManageCorpus';
 import CreateQuiz from './components/CreateQuiz';
 import SearchResults from './components/SearchResults';
 import { QuizData, MessageRole, SearchResultItem } from './types';
+import Tutorial from './components/Tutorial';
 
 const AppContent: React.FC = () => {
   const { t } = useLanguage();
@@ -19,6 +20,21 @@ const AppContent: React.FC = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState<SearchResultItem[]>([]);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [showTutorial, setShowTutorial] = useState(false);
+
+  useEffect(() => {
+    // Show tutorial only if the flag is not set in local storage
+    const hasSeenTutorial = localStorage.getItem('hasSeenTutorial');
+    if (!hasSeenTutorial) {
+      setShowTutorial(true);
+    }
+  }, []);
+
+  const handleFinishTutorial = () => {
+    localStorage.setItem('hasSeenTutorial', 'true');
+    setShowTutorial(false);
+  };
+
 
   const handleSelectConversation = (id: string) => {
     setActiveConversationId(id);
@@ -89,6 +105,7 @@ const AppContent: React.FC = () => {
 
   return (
     <div className="h-screen flex flex-col font-sans">
+      {showTutorial && <Tutorial onFinish={handleFinishTutorial} />}
       <Header onSearch={handleSearch} onMenuToggle={() => setIsSidebarOpen(true)} />
       <div className="flex-grow flex overflow-hidden">
         {isSidebarOpen && (
@@ -108,7 +125,7 @@ const AppContent: React.FC = () => {
           onSelectQuizCreator={handleSelectQuizCreator}
           activeId={getActiveSidebarId()}
         />
-        <main className="flex-1 flex flex-col overflow-hidden">
+        <main data-tutorial-id="main-chat-area" className="flex-1 flex flex-col overflow-hidden">
           {activeView === 'search' ? (
             <SearchResults query={searchQuery} results={searchResults} onResultClick={handleSearchResultClick} />
           ) : activeView === 'chat' && activeConversation ? (

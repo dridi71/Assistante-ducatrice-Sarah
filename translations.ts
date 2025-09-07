@@ -116,8 +116,28 @@ export const translations: Translations = {
   quizTopicPlaceholder: { fr: 'Ex: Les fractions, la révolution tunisienne...', ar: 'مثال: الكسور، الثورة التونسية...' },
   numQuestionsLabel: { fr: 'Nombre de questions', ar: 'عدد الأسئلة' },
   generateQuizButton: { fr: 'Générer le Quiz', ar: 'إنشاء الاختبار' },
-  errorEnterQuizTopic: { fr: 'Veuillez entrer un thème pour le quiz.', ar: 'الرجاء إدخال موضوع للاختبار.' },
+  errorEnterQuizTopic: { fr: 'Veuillez entrer un thème pour le quiz.', ar: 'الرجاء إدخال موضوع للاستفتاء.' },
   quizRequestTitle: { fr: 'Demande de quiz', ar: 'طلب اختبار' },
+
+  // Tutorial
+  tutorialSkip: { fr: 'Passer', ar: 'تخطّ' },
+  tutorialPrev: { fr: 'Précédent', ar: 'السابق' },
+  tutorialNext: { fr: 'Suivant', ar: 'التالي' },
+  tutorialFinish: { fr: 'Terminer', ar: 'إنهاء' },
+  tutorialWelcomeTitle: { fr: 'Bienvenue sur Sarah AI !', ar: 'مرحباً بك في سارة!' },
+  tutorialWelcomeDesc: { fr: "Prenons un instant pour découvrir les fonctionnalités principales. C'est très rapide !", ar: 'لنأخذ لحظة لاكتشاف الميزات الرئيسية. الأمر سريع جداً!' },
+  tutorialChatTitle: { fr: 'Zone de Conversation', ar: 'منطقة المحادثة' },
+  tutorialChatDesc: { fr: "C'est ici que vous interagirez avec Sarah. Posez des questions, attachez des fichiers et obtenez des réponses instantanées.", ar: 'هنا ستتفاعل مع سارة. اطرح الأسئلة، أرفق الملفات، واحصل على إجابات فورية.' },
+  tutorialNewChatTitle: { fr: 'Nouvelle Conversation', ar: 'محادثة جديدة' },
+  tutorialNewChatDesc: { fr: "Cliquez ici pour démarrer une nouvelle conversation. Toutes vos discussions sont sauvegardées automatiquement.", ar: 'انقر هنا لبدء محادثة جديدة. يتم حفظ جميع مناقشاتك تلقائيًا.' },
+  tutorialCorpusTitle: { fr: 'Base de Connaissances', ar: 'قاعدة المعرفة' },
+  tutorialCorpusDesc: { fr: 'Ajoutez vos propres documents ici. Sarah utilisera ces informations pour vous fournir des réponses encore plus précises et personnalisées.', ar: 'أضف وثائقك الخاصة هنا. ستستخدم سارة هذه المعلومات لتزويدك بإجابات أكثر دقة وتخصيصًا.' },
+  tutorialQuizTitle: { fr: 'Générateur de Quiz', ar: 'مولّد الاختبارات' },
+  tutorialQuizDesc: { fr: 'Créez des quiz interactifs pour vos élèves en quelques clics. Idéal pour réviser et évaluer les connaissances.', ar: 'أنشئ اختبارات تفاعلية لطلابك ببضع نقرات. مثالي للمراجعة وتقييم المعرفة.' },
+  tutorialLangTitle: { fr: 'Changer de Langue', ar: 'تغيير اللغة' },
+  tutorialLangDesc: { fr: "Basculez entre le français et l'arabe à tout moment pour une expérience entièrement localisée.", ar: 'بدّل بين الفرنسية والعربية في أي وقت لتجربة مترجمة بالكامل.' },
+  tutorialEndTitle: { fr: "Vous êtes prêt !", ar: 'أنت جاهز!' },
+  tutorialEndDesc: { fr: "Vous connaissez maintenant les bases. N'hésitez pas à explorer et à découvrir tout ce que Sarah peut faire pour vous.", ar: 'أنت الآن تعرف الأساسيات. لا تتردد في الاستكشاف واكتشاف كل ما يمكن لسارة أن تقدمه لك.' },
 
 
   // Status Messages

@@ -96,7 +96,7 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ conversation, addMessage,
          <div ref={messagesEndRef} />
       </div>
 
-      <div className="p-4 border-t border-slate-200 bg-white">
+      <div className="p-4 border-t border-slate-200 bg-white" data-tutorial-id="chat-input-area">
         <ChatInput onSend={handleSendMessage} />
       </div>
     </div>
