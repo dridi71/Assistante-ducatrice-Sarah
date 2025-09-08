@@ -1,8 +1,8 @@
 const CACHE_NAME = 'sarah-ai-cache-v1';
 const urlsToCache = [
-  './',
-  './index.html',
-  './logo.svg',
+  '/',
+  '/index.html',
+  '/logo.svg',
   'https://cdn.tailwindcss.com',
   'https://esm.sh/react@^19.1.1',
   'https://esm.sh/react-dom@^19.1.1'
@@ -19,6 +19,11 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  // Ignore non-GET requests and requests to non-http protocols to prevent errors.
+  if (event.request.method !== 'GET' || !event.request.url.startsWith('http')) {
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {

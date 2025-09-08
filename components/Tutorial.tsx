@@ -70,7 +70,6 @@ const Tutorial: React.FC<TutorialProps> = ({ onFinish }) => {
          if (highlightedRect.top > window.innerHeight / 2) {
              textBoxStyle.bottom = `${window.innerHeight - highlightedRect.top + 16}px`;
          } else {
-             // FIX: The 'Rect' interface does not have a 'bottom' property. It should be calculated from 'top' and 'height'.
              textBoxStyle.top = `${highlightedRect.top + highlightedRect.height + 16}px`;
          }
          textBoxStyle.left = `${highlightedRect.left}px`;

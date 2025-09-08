@@ -9,6 +9,17 @@ export const useChatHistory = () => {
   const [conversations, setConversations] = useState<ChatConversation[]>([]);
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const createConversation = useCallback((): string => {
+    const newConversation: ChatConversation = {
+      id: new Date().toISOString(),
+      title: t('defaultConversationTitle'),
+      messages: [],
+      createdAt: new Date().toISOString(),
+    };
+    setConversations(prev => [newConversation, ...prev]);
+    return newConversation.id;
+  }, [t]);
+
   useEffect(() => {
     try {
       const storedItems = localStorage.getItem(STORAGE_KEY);
@@ -24,6 +35,9 @@ export const useChatHistory = () => {
     } finally {
       setIsLoaded(true);
     }
+    // This effect should only run once on mount to initialize the history.
+    // The `createConversation` dependency is intentionally omitted to prevent re-initialization on language change.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -35,17 +49,6 @@ export const useChatHistory = () => {
       }
     }
   }, [conversations, isLoaded]);
-
-  const createConversation = useCallback((): string => {
-    const newConversation: ChatConversation = {
-      id: new Date().toISOString(),
-      title: t('defaultConversationTitle'),
-      messages: [],
-      createdAt: new Date().toISOString(),
-    };
-    setConversations(prev => [newConversation, ...prev]);
-    return newConversation.id;
-  }, [t]);
 
   const deleteConversation = useCallback((id: string) => {
     setConversations(prev => prev.filter(c => c.id !== id));
