@@ -128,9 +128,23 @@ export async function POST(req: Request) {
                     config: { responseMimeType: 'application/json', responseSchema: quizSchema }
                 });
 
-                return new Response(response.text, {
-                    headers: { 'Content-Type': 'application/json' },
-                });
+                const jsonText = response.text.trim();
+                
+                try {
+                    // Validate that the response is valid JSON before sending it to the client.
+                    JSON.parse(jsonText);
+                    return new Response(jsonText, {
+                        headers: { 'Content-Type': 'application/json' },
+                    });
+                } catch (parseError) {
+                    console.error('Gemini API returned non-JSON response for a quiz request:', jsonText);
+                    // Throw a new error that will be caught by the main catch block
+                    // and sent to the client as a user-friendly message.
+                    const errorMessage = language === 'ar' 
+                        ? 'فشل النموذج في إنشاء بنية اختبار صالحة. الرجاء المحاولة مرة أخرى.' 
+                        : 'Le modèle n\'a pas réussi à générer une structure de quiz valide. Veuillez réessayer.';
+                    throw new Error(errorMessage);
+                }
 
             default:
                 throw new Error('Invalid action specified.');
@@ -144,13 +158,19 @@ export async function POST(req: Request) {
         // Pipe the stream from Gemini API to the client
         const stream = new ReadableStream({
             async start(controller) {
-                for await (const chunk of responseStream) {
-                    const text = chunk.text;
-                    if (text) {
-                        controller.enqueue(new TextEncoder().encode(text));
+                try {
+                    for await (const chunk of responseStream) {
+                        const text = chunk.text;
+                        if (text) {
+                            controller.enqueue(new TextEncoder().encode(text));
+                        }
                     }
+                    controller.close();
+                } catch (error) {
+                    console.error('Streaming Error:', error);
+                    const errorMessage = error instanceof Error ? error.message : 'An unknown streaming error occurred.';
+                    controller.error(new Error(errorMessage));
                 }
-                controller.close();
             },
         });
 

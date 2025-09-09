@@ -43,8 +43,8 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({ conversation, addMessage,
         addMessage(conversation.id, MessageRole.User, message, attachment || undefined);
         addMessage(conversation.id, MessageRole.Assistant, '');
 
-        if (attachment?.type === 'image') {
-            const stream = explainImageStream(message, attachment.content, 'image/webp', language, corpusContent, fileContent);
+        if (attachment?.type === 'image' && attachment.mimeType) {
+            const stream = explainImageStream(message, attachment.content, attachment.mimeType, language, corpusContent, fileContent);
             for await (const chunk of stream) {
                 updateMessage(conversation.id, chunk);
             }

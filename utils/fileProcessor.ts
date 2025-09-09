@@ -81,6 +81,7 @@ export const processFile = async (file: File): Promise<Attachment> => {
         attachment.type = 'image';
         attachment.previewUrl = dataUrl;
         attachment.content = dataUrl.split(',')[1]; // Base64 content
+        attachment.mimeType = fileType;
     } else {
         attachment.type = 'document';
         attachment.previewUrl = null;

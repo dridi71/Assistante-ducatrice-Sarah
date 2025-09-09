@@ -44,6 +44,7 @@ export interface Attachment {
   type: 'image' | 'document';
   previewUrl?: string | null;
   content: string; // Base64 for images, extracted text for docs
+  mimeType?: string;
 }
 
 export interface ChatMessage {
