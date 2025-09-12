@@ -19,8 +19,9 @@ root.render(
 // Register the service worker for PWA functionality
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // Use a document-relative path for the service worker to ensure it registers from the correct origin, especially in an iframe.
-    navigator.serviceWorker.register('./sw.js')
+    // Register the service worker with a root-relative path.
+    // This is more reliable than constructing a URL from `import.meta.url`.
+    navigator.serviceWorker.register('/sw.js')
       .then(registration => {
         console.log('Service Worker registered with scope:', registration.scope);
       })

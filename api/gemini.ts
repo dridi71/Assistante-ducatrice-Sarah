@@ -93,7 +93,7 @@ export async function POST(req: Request) {
                 const imagePart = {
                     inlineData: { data: body.imageBase64, mimeType: body.mimeType },
                 };
-                contents = { parts: [imagePart, { text: finalPrompt }] };
+                contents = [{ parts: [imagePart, { text: finalPrompt }] }];
                 break;
 
             case 'generateQuiz':
