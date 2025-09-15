@@ -20,9 +20,7 @@ const UserAvatar = () => (
 );
 
 const AssistantAvatar = () => (
-     <div className="w-9 h-9 rounded-full bg-indigo-500 flex items-center justify-center text-white font-bold flex-shrink-0">
-        S
-    </div>
+     <img src="/sarah-avatar.svg" alt="Sarah AI Avatar" className="w-9 h-9 rounded-full flex-shrink-0 object-cover" />
 );
 
 const DocumentCard = ({ name }: { name: string }) => {

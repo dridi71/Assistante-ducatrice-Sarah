@@ -4,8 +4,8 @@ const urlsToCache = [
   '/index.html',
   '/logo.svg',
   'https://cdn.tailwindcss.com',
-  'https://esm.sh/react@^19.1.1',
-  'https://esm.sh/react-dom@^19.1.1'
+  'https://esm.sh/react@^19.0.0',
+  'https://esm.sh/react-dom@^19.0.0'
 ];
 
 self.addEventListener('install', (event) => {

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Attachment } from '../types';
 import { processFile } from '../utils/fileProcessor';
@@ -26,6 +26,12 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const recognitionRef = useRef<any>(null);
 
+  // Use a ref to hold the latest onSend function to avoid dependency issues in useEffect
+  const onSendRef = useRef(onSend);
+  useEffect(() => {
+    onSendRef.current = onSend;
+  }, [onSend]);
+
   // Proactive permission check for microphone
   useEffect(() => {
       if ('permissions' in navigator) {
@@ -35,6 +41,13 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
                   setMicPermission(permissionStatus.state);
               };
           });
+      }
+  }, []);
+
+  const removeFile = useCallback(() => {
+      setAttachment(null);
+      if (fileInputRef.current) {
+          fileInputRef.current.value = '';
       }
   }, []);
 
@@ -48,7 +61,12 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
 
       recognitionRef.current.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript;
-        setInput(prev => prev ? `${prev} ${transcript}` : transcript);
+        if (transcript.trim()) {
+            // Automatically send the transcribed message
+            onSendRef.current(transcript, null);
+            setInput('');
+            removeFile();
+        }
         setIsListening(false);
       };
       
@@ -65,7 +83,7 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
         setIsListening(false);
       };
     }
-  }, [language, t]);
+  }, [language, t, removeFile]);
 
 
   useEffect(() => {
@@ -77,13 +95,6 @@ const ChatInput: React.FC<ChatInputProps> = ({ onSend }) => {
       textarea.style.height = `${Math.min(scrollHeight, maxHeight)}px`;
     }
   }, [input]);
-  
-  const removeFile = () => {
-      setAttachment(null);
-      if (fileInputRef.current) {
-          fileInputRef.current.value = '';
-      }
-  };
 
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
