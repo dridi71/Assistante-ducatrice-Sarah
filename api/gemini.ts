@@ -10,8 +10,9 @@ export const config = {
   runtime: 'edge',
 };
 
-// Initialize the Google AI client with the API key from server-side environment variables
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+// Initialize the Google AI client with the API key from server-side environment variables.
+// On Vercel, set the GEMINI_API_KEY environment variable in your project settings.
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
 const model = 'gemini-2.5-flash';
 
 // Define a type for the expected request body from the frontend
@@ -62,7 +63,7 @@ const getBasePrompt = (language: 'fr' | 'ar', corpusContent?: string, fileConten
 
 // The main serverless function handler
 export async function POST(req: Request) {
-    if (!process.env.API_KEY) {
+    if (!process.env.GEMINI_API_KEY) {
         return new Response('API key not configured on the server.', { status: 500 });
     }
     
